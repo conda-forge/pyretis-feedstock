@@ -1,5 +1,5 @@
 {% set name = "pyretis" %}
-{% set version = "1.0.0" %} 
+{% set version = "2.0.1" %} 
 {% set sha256 = "8eb050713d58bce4a86e3f98d0bfc369674561f6c4b5599c2e7507ee8c1e0d49" %}
 
 package:
@@ -38,7 +38,7 @@ test:
 about:
   home: http://www.pyretis.org
   license: LGPLv2.1+
-  summary: 'PyRETIS: A well-done, medium-sized python library for rare events'
+  summary: 'PyRETIS: A well-done, medium-sized python library for rare events, DOI: 10.1002/jcc.24900'
 
 extra:
   recipe-maintainers:
