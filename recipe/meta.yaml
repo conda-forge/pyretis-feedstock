@@ -1,6 +1,6 @@
 {% set name = "pyretis" %}
-{% set version = "2.0.1" %} 
-{% set sha256 = "8eb050713d58bce4a86e3f98d0bfc369674561f6c4b5599c2e7507ee8c1e0d49" %}
+{% set version = "2.0.3" %}
+{% set sha256 = "7f2367fe031c8c9623527e9de8c76de32ae2d865453b9797fe7a62209fba066e" %}
 
 package:
   name: {{ name|lower }}
@@ -16,23 +16,43 @@ build:
   skip: True  # [py2k]
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
+
 requirements:
   build:
-    - python
+    - python {{ environ.get('python_version', '3.5') }}
     - setuptools
+    - cython
+    - numpy 1.8.*  # [not (win and (py35 or py36))]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
+    - zlib 1.2.11
+    - msinttypes  # [win and py27]
+
   run:
-    - python
+    - python {{ environ.get('python_version', '3.5') }}
+    - setuptools
+    - numpy >=1.8  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
+    - scipy
+    - pandas
+    - pytables
+    - zlib 1.2.11
     - colorama
     - tqdm
-    - docutils  
-    - numpy  
-    - scipy
+    - docutils
     - matplotlib
     - jinja2
-    - mdtraj
+
+  commands:
+    - mdconvert -h
+    - mdinspect -h
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 test:
   imports:
+    - mdtraj
     - pyretis
 
 about:
