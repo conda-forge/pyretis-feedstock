@@ -12,28 +12,32 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1000
   skip: True  # [py2k]
+  
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 
 requirements:
   build:
-    - python {{ environ.get('python_version', '3.6') }}
+  
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - pip
     - setuptools
     - cython
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
-    - zlib 1.2.11
+    - numpy
+    - zlib
     - msinttypes  # [win and py27]
-
+    - mdtraj
+    
   run:
-    - python {{ environ.get('python_version', '3.6') }}
+    - pytho
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - {{ pin_compatible('numpy') }}
     - scipy
     - pandas
     - pytables
@@ -43,10 +47,10 @@ requirements:
     - docutils
     - matplotlib
     - jinja2
+    - mdtraj
 
 test:
   imports:
-    - mdtraj
     - pyretis
 
 about:
