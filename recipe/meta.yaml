@@ -1,6 +1,6 @@
 {% set name = "pyretis" %}
-{% set version = "2.4.0" %}
-{% set sha256 = "59ccd225b78dbb307ac34718b7444251d62605608f3b3251757b49edc72c4d89" %}
+{% set version = "2.4.1" %}
+{% set sha256 = "33b2da57ece7515bb711397e41c90c9d586779793e5366f48c9e7a2f0ee5f329" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,8 @@ source:
 
 build:
   skip: true  # [py<36]
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv" 
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 
 requirements:
