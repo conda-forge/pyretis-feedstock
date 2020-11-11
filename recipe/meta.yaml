@@ -53,7 +53,7 @@ test:
 
 about:
   home: http://www.pyretis.org
-  license: LGPLv2.1+
+  license: LGPL-2.1-or-later
   license_file: LICENSE
   summary: 'PyRETIS: A well-done, medium-sized python library for rare events, DOI: 10.1002/jcc.24900'
 
