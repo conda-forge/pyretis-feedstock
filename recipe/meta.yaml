@@ -25,7 +25,6 @@ requirements:
     - cython
     - numpy
     - zlib
-    - msinttypes  # [win and py27]
   run:
     - python
     - cython
