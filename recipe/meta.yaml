@@ -1,22 +1,23 @@
 {% set name = "pyretis" %}
-{% set version = "2.5.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b4b842a83f39e97a9bbf2d9797f53823b9e741b479b5a6744aeb42daf1c7ad2b
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5e05f2dd091f9fabfe44a6a2a232d945764b9bd2bc9318d9efeae381930f8e8f
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
